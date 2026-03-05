@@ -1,11 +1,11 @@
 import random
 import streamlit as st
-# The following functions have been refactored into logic_utils.py:
+# Refactored game logic functions from app.py to logic_utils.py
 from logic_utils import (
-    get_range_for_difficulty,  # Refactored to logic_utils.py
-    parse_guess,  # Refactored to logic_utils.py
-    check_guess,  # Refactored to logic_utils.py
-    update_score,  # Refactored to logic_utils.py
+    get_range_for_difficulty,
+    parse_guess,
+    check_guess,
+    update_score,
 )
 
 st.set_page_config(page_title="Glitchy Guesser", page_icon="🎮")
@@ -28,7 +28,7 @@ attempt_limit_map = {
 }
 attempt_limit = attempt_limit_map[difficulty]
 
-low, high = get_range_for_difficulty(difficulty)
+low, high = get_range_for_difficulty(difficulty)  # Refactored to logic_utils.py
 
 st.sidebar.caption(f"Range: {low} to {high}")
 st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
@@ -92,7 +92,7 @@ if st.session_state.status != "playing":
 if submit:
     st.session_state.attempts += 1
 
-    ok, guess_int, err = parse_guess(raw_guess)
+    ok, guess_int, err = parse_guess(raw_guess)  # Refactored to logic_utils.py
 
     if not ok:
         st.session_state.history.append(raw_guess)
@@ -102,12 +102,12 @@ if submit:
         #FIXED SHOULD NOT BE ALTERNATING STRING AND INT
         secret = st.session_state.secret
 
-        outcome, message = check_guess(guess_int, secret)
+        outcome, message = check_guess(guess_int, secret)  # Refactored to logic_utils.py
 
         if show_hint:
             st.warning(message)
 
-        st.session_state.score = update_score(
+        st.session_state.score = update_score(  # Refactored to logic_utils.py
             current_score=st.session_state.score,
             outcome=outcome,
             attempt_number=st.session_state.attempts,
