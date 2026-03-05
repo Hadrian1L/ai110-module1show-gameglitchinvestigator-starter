@@ -66,3 +66,5 @@ The application is a number guessing game where players try to guess a secret nu
 ## 📸 Demo
 
 - [ ] [Insert a screenshot of your fixed, winning game here]
+ <img width="1156" height="685" alt="image" src="https://github.com/user-attachments/assets/747d2484-4e4d-449f-b954-c2a4fa32d150" />
+
